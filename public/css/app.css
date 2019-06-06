@@ -10887,6 +10887,9 @@ a.text-dark:focus {
 }
 
 .pulse-button {
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #fff;
   position: relative;
   width: 200px;
   height: 200px;
@@ -10895,8 +10898,15 @@ a.text-dark:focus {
   border-radius: 50%;
   background-color: #e84c3d;
   cursor: pointer;
+}
+
+.pulsing {
   -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+.pulse-button:focus {
+  outline: none;
 }
 
 .pulse-button:hover {

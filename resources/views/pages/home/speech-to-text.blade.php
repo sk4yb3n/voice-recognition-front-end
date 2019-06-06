@@ -1,5 +1,5 @@
 <script>
-
+var step = 1;
 $(function() {
   // const Swal = require('sweetalert2');
   // Swal.fire({
@@ -10,6 +10,38 @@ $(function() {
   // });
   $(document).on('click', '#confirm-speech-btn', function () {
     // send request to api
+    $("#confirm-speech").hide();
+    $.ajax({
+      type: "POST",
+      crossDomain: true,
+      url: "{{ route('sentence.send') }}",
+      data: { sentence: $("#final_span").text(), step: step },
+      success: function (data) {
+        var response = JSON.parse(data);
+        console.log(response);
+        //sweet alert success
+        if (response.step == 1) {
+          $("#step-2-content").html(response.content);
+          ++step;
+        }
+        if (response.step == 2) {
+          window.open(response.content);
+          $("#downloadable").html(response.content);
+        }
+
+        if (response.done == 1) {
+          step = 1;
+        }
+
+        if (response.status == 'error') {
+          $("#step-2-content").html(response.content);
+        }
+        console.log(response);
+      },
+      error: function () {
+        // sweet alert error
+      }
+    });
 
     // after request gets done, hide confirm speech component
     // $("#confirm-speech").hide();
@@ -73,6 +105,7 @@ if (!('webkitSpeechRecognition' in window)) {
     showInfo('info_speak_now');
     $("#start_button").text('Stop');
     $("#confirm-speech").hide();
+    $("#start_button").addClass('pulsing');
   };
 
   recognition.onerror = function(event) {
@@ -98,6 +131,7 @@ if (!('webkitSpeechRecognition' in window)) {
 
   recognition.onend = function() {
     recognizing = false;
+    $("#start_button").removeClass('pulsing');
     if (ignore_onend) {
       return;
     }

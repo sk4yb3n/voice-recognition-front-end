@@ -1,5 +1,7 @@
 .pulse-button {
-
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #fff;
     position: relative;
     width: 200px;
     height: 200px;
@@ -8,20 +10,28 @@
     border-radius: 50%;
     background-color: #e84c3d;
     cursor: pointer;
+}
+
+.pulsing {
     -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
     -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
     -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
     animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
-  }
-  .pulse-button:hover 
-  {
-    -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
-  }
-  
-  @-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
-  @-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
-  @-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
-  @keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+}
+
+.pulse-button:focus {
+    outline: none;
+}
+
+.pulse-button:hover 
+{
+-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 
 .results {
     margin-top: 50px;
